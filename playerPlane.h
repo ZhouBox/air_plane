@@ -94,7 +94,7 @@ protected:
      */
     void keyPressEvent(QKeyEvent *event);
 
-    void keyReleaseEvent(QKeyEvent *event);
+//    void keyReleaseEvent(QKeyEvent *event);
 
 protected slots:
     void slt_resetBulletFlag();
@@ -131,14 +131,14 @@ private:
     /**
      * @brief leftPosture 向左移动姿势
      */
-    void leftPosture();
+   // void leftPosture();
     /**
      * @brief rightPosture 向右移动姿势
      */
-    void rightPosture();
+   // void rightPosture();
 
 
-    void normalPosture();
+  //  void normalPosture();
 
 
     void collides(Flyer *fv, int flag);

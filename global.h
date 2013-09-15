@@ -62,6 +62,8 @@ public:
         bombClassFlag(BOMB),
         playerPlanePixmap(QPixmaps()),
         enemyPlanePixmap(QPixmaps()),
+        enemyPlaneMPixmap(QPixmaps()),
+        enemyPlaneLPixmap(QPixmaps()),
         bulletSupplyPixmap(QPixmaps()),
         level(1),
         p_eplC(0) {
@@ -141,6 +143,16 @@ public:
      * @brief enemyPlanePixmap 敌机用到的图片
      */
     QPixmaps enemyPlanePixmap;
+
+    /**
+     * @brief enemyPlaneMPixmap 中型敌机使用的图片
+     */
+    QPixmaps enemyPlaneMPixmap;
+
+    /**
+     * @brief enemyPlaneLPixmap 大型敌机使用的图片
+     */
+    QPixmaps enemyPlaneLPixmap;
 
 
     QPixmaps bulletSupplyPixmap;

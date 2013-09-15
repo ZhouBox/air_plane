@@ -3,7 +3,7 @@
 Bomb::Bomb(uint speed, QGraphicsScene *scene, QGraphicsItem *parent):
     Flyer(speed, scene, parent)
 {
-    m_pixmap.load(":/image/#.png");
+    m_pixmap.load("://image/bomb.png");
 }
 
 QRectF Bomb::boundingRect() const

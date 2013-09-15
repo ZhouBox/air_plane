@@ -8,5 +8,28 @@
         <file>image/#.png</file>
         <file>image/A.png</file>
         <file>image/B.png</file>
+        <file>image/bomb.png</file>
+        <file>image/bulletA.png</file>
+        <file>image/enemy_die1.png</file>
+        <file>image/enemy_die2.png</file>
+        <file>image/enemy_die3.png</file>
+        <file>image/enemyL.png</file>
+        <file>image/enemyL_die1.png</file>
+        <file>image/enemyL_die2.png</file>
+        <file>image/enemyL_die3.png</file>
+        <file>image/enemyL_hurt.png</file>
+        <file>image/enemyM.png</file>
+        <file>image/enemyM_die1.png</file>
+        <file>image/enemyM_die2.png</file>
+        <file>image/enemyM_die3.png</file>
+        <file>image/enemyM_die4.png</file>
+        <file>image/enemyM_hurt.png</file>
+        <file>image/player_die1.png</file>
+        <file>image/player_die2.png</file>
+        <file>image/player_die3.png</file>
+        <file>image/player_die4.png</file>
+        <file>image/bulletB.png</file>
+        <file>image/enemyL_die4.png</file>
+        <file>image/enemyL_die5.png</file>
     </qresource>
 </RCC>

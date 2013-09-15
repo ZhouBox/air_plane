@@ -25,6 +25,7 @@ public:
 
     virtual void fall() {
         setVisible(false);
+        deleteLater();
     }
 private:
     QPixmap m_pixmap;

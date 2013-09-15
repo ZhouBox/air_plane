@@ -76,7 +76,7 @@ void Space::slt_enemys()
         FlightVehicle *epl = NULL;
         // if (GlobalParameter::instance()->p_eplC->isEmpty()) {
         epl = new EnemyPlane(GlobalParameter::instance()->enemyPlanePixmap,1,
-                             /*GlobalParameter::instance()->enemyPlaneLittleSpeed*/Randomizer::creat(6,22),&m_scene);
+                             /*GlobalParameter::instance()->enemyPlaneLittleSpeed*/Randomizer::creat(6,16),&m_scene);
         // } else {
         //     epl = GlobalParameter::instance()->p_eplC->front();
         //     GlobalParameter::instance()->p_eplC->pop_front();

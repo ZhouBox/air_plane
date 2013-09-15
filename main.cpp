@@ -27,18 +27,62 @@ static void initConfigure(GlobalParameter *gp)
     //    gp->windowsHeight = QApplication::desktop()->height() - 50;
 
 
-    QPixmap pix(":/image/player.png");
-    gp->playerPlanePixmap << pix << pix << pix;
+    QPixmap pix("://image/player.png");
+    gp->playerPlanePixmap << pix;
+    pix.load("://image/player_die1.png");
+    gp->playerPlanePixmap << pix;
+    pix.load("://image/player_die2.png");
+    gp->playerPlanePixmap << pix;
+    pix.load("://image/player_die3.png");
+    gp->playerPlanePixmap << pix;
+    pix.load("://image/player_die4.png");
+    gp->playerPlanePixmap << pix;
 
-    pix.load(":/image/enemy.png");
+    pix.load("://image/enemy.png");
+    gp->enemyPlanePixmap << pix;
+    pix.load("://image/enemy_die1.png");
+    gp->enemyPlanePixmap << pix;
+    pix.load("://image/enemy_die2.png");
+    gp->enemyPlanePixmap << pix;
+    pix.load("://image/enemy_die3.png");
+    gp->enemyPlanePixmap << pix;
 
-    gp->enemyPlanePixmap << pix << pix << pix;
 
-    pix.load(":/image/A.png");
+    pix.load("://image/enemyM.png");
+    gp->enemyPlaneMPixmap << pix;
+    pix.load("://image/enemyM_die1.png");
+    gp->enemyPlaneMPixmap << pix;
+    pix.load("://image/enemyM_die2.png");
+    gp->enemyPlaneMPixmap << pix;
+    pix.load("://image/enemyM_die3.png");
+    gp->enemyPlaneMPixmap << pix;
+    pix.load("://image/enemyM_die4.png");
+    gp->enemyPlaneMPixmap << pix;
+    pix.load("://image/enemyM_hurt.png");
+    gp->enemyPlaneMPixmap << pix;
+
+
+    pix.load("://image/enemyL.png");
+    gp->enemyPlaneLPixmap << pix;
+    pix.load("://image/enemyL_die1.png");
+    gp->enemyPlaneLPixmap << pix;
+    pix.load("://image/enemyL_die2.png");
+    gp->enemyPlaneLPixmap << pix;
+    pix.load("://image/enemyL_die3.png");
+    gp->enemyPlaneLPixmap << pix;
+    pix.load("://image/enemyL_die4.png");
+    gp->enemyPlaneLPixmap << pix;
+    pix.load("://image/enemyL_die5.png");
+    gp->enemyPlaneLPixmap << pix;
+    pix.load("://image/enemyL_hurt.png");
+    gp->enemyPlaneLPixmap << pix;
+
+
+    pix.load("://image/bulletA.png");
 
     gp->bulletSupplyPixmap << pix;
 
-    pix.load(":/image/B.png");
+    pix.load("://image/bulletB.png");
 
     gp->bulletSupplyPixmap << pix;
 

@@ -33,6 +33,7 @@ public:
 
     virtual void fall() {
         setVisible(false);
+        deleteLater();
     }
 
 private:

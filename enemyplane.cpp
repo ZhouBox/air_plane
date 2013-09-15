@@ -1,8 +1,8 @@
 #include "enemyplane.h"
 
 EnemyPlane::EnemyPlane(const QList<QPixmap> &animation,
-                                   uint bloods, uint speed,
-                                   QGraphicsScene *scene, QGraphicsItem *parent):
+                       uint bloods, uint speed,
+                       QGraphicsScene *scene, QGraphicsItem *parent):
     FlightVehicle(animation, bloods, speed, scene, parent)
 {
     //connect(this, SIGNAL(visibleChanged()), this, SLOT(slt_cache()));
@@ -63,8 +63,8 @@ void EnemyPlane::posLost()
 
 void EnemyPlane::fall()
 {
-
     setVisible(false);
+    deleteLater();
     emit sig_addScore(1);
 }
 

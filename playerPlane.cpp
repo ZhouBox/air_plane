@@ -37,12 +37,12 @@ void PlayerPlane::keyPressEvent(QKeyEvent *event)
         event->accept();
         break;
     case Qt::Key_A://向左移动
-        leftPosture();
+//        leftPosture();
         moveLeft();
         event->accept();
         break;
     case Qt::Key_D://向右移动
-        rightPosture();
+//        rightPosture();
         moveRight();
         event->accept();
         break;
@@ -56,19 +56,19 @@ void PlayerPlane::keyPressEvent(QKeyEvent *event)
     }
 }
 
-void PlayerPlane::keyReleaseEvent(QKeyEvent *event)
-{
-    switch (event->key()) {
-    case Qt::Key_A://向左
-    case Qt::Key_D://向右
-        normalPosture();
-        event->accept();
-        break;
-    default:
-        Flyer::keyReleaseEvent(event);
-        break;
-    }
-}
+//void PlayerPlane::keyReleaseEvent(QKeyEvent *event)
+//{
+//    switch (event->key()) {
+//    case Qt::Key_A://向左
+//    case Qt::Key_D://向右
+//        normalPosture();
+//        event->accept();
+//        break;
+//    default:
+//        Flyer::keyReleaseEvent(event);
+//        break;
+//    }
+//}
 
 
 void PlayerPlane::moveFront()
@@ -112,23 +112,23 @@ void PlayerPlane::moveRight()
 
 }
 
-inline
-void PlayerPlane::leftPosture()
-{
-    setFrame(1);
-}
+//inline
+//void PlayerPlane::leftPosture()
+//{
+//    setFrame(1);
+//}
 
-inline
-void PlayerPlane::rightPosture()
-{
-    setFrame(2);
-}
+//inline
+//void PlayerPlane::rightPosture()
+//{
+//    setFrame(2);
+//}
 
-inline
-void PlayerPlane::normalPosture()
-{
-    setFrame(0);
-}
+//inline
+//void PlayerPlane::normalPosture()
+//{
+//    setFrame(0);
+//}
 
 
 
@@ -138,21 +138,21 @@ void PlayerPlane::shoot()
     QPointF p = scenePos();
     //40/2是让子弹在图片的中间发射
 
-    p.ry() -= 15;
+    p.ry() -= 20;
     if (m_bulletFlag == BulletFactory::_1) {
-        p.rx() += 40/4 * 2;
+        p.rx() += 46/4 * 2;
         foreach (Bullet* b, bp) {
             b->setPos(p);
         }
     } else {
         if (m_bulletFlag == BulletFactory::_2) {
-            p.rx() += 40/4 * 1;
+            p.rx() += 46/4 * 1;
             foreach (Bullet* b, bp) {
                 b->setPos(p);
-                p.rx() += 40/4 * 2;
+                p.rx() += 46/4 * 2;
             }
         } else {
-            p.rx() += 40/4 * 2;
+            p.rx() += 46/4 * 2;
             foreach (Bullet* b, bp) {
                 b->setPos(p);
             }
