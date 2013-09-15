@@ -6,6 +6,15 @@ EnemyPlane::EnemyPlane(const QList<QPixmap> &animation,
     FlightVehicle(animation, bloods, speed, scene, parent)
 {
     //connect(this, SIGNAL(visibleChanged()), this, SLOT(slt_cache()));
+    if (bloods == 1) {
+        m_style = LITTLE;
+    } else {
+        if (bloods == 7) {
+            m_style = MIDDLE;
+        } else {
+            m_style = LARGER;
+        }
+    }
 }
 
 
@@ -65,7 +74,16 @@ void EnemyPlane::fall()
 {
     setVisible(false);
     deleteLater();
-    emit sig_addScore(1);
+    if (m_style == LITTLE) {
+        emit sig_addScore(1);
+    } else {
+        if (m_style == MIDDLE) {
+            emit sig_addScore(5);
+        } else{
+            emit sig_addScore(10);
+        }
+    }
+
 }
 
 

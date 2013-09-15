@@ -101,6 +101,8 @@ private:
     void doAbomb();
     void setBloodsText(const QString &text);
     void setBombText(int val);
+    void createEnemyM();
+    void createEnemyL();
 
 
 

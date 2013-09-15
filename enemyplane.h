@@ -58,6 +58,10 @@ protected slots:
     }
 private:
 
+    typedef enum{LITTLE, MIDDLE, LARGER} STYLE;
+
+    STYLE m_style;
+
 
 
 };

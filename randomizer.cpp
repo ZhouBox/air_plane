@@ -7,7 +7,7 @@ Randomizer::Randomizer(QObject *parent) :
 
 
 /**
- * @brief Randomizer::creat 产生0～i-1的随机整数
+ * @brief Randomizer::creat 产生0~i-1的随机整数
  * @param i
  * @return
  */
