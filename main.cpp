@@ -105,7 +105,8 @@ int main(int argc, char* argv[])
     sw.resize(GlobalParameter::instance()->windowsWidth,
               GlobalParameter::instance()->windowsHeight);
     sw.move(QApplication::desktop()->rect().center() -
-            QPoint(GlobalParameter::instance()->windowsWidth/2, GlobalParameter::instance()->windowsHeight/2));
+            QPoint(GlobalParameter::instance()->windowsWidth/2,
+                   GlobalParameter::instance()->windowsHeight/2));
     sw.show();
 
 
