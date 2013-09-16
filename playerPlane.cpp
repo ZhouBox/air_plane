@@ -213,7 +213,6 @@ void PlayerPlane::collides(Flyer *fv,int flag)
             m_second = 0;
         }
 
-
         break;
     case BLOODSUPPLY:
         fv->fall();

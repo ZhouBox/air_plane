@@ -2,7 +2,6 @@
 #define FLYPATH_H
 
 
-#include <vector>
 
 
 /**
@@ -39,7 +38,7 @@ private:
 
 double BulletFlyPath::operator ()(double /*x*/)
 {
-    return m_y;
+    return m_y++;
 }
 
 

@@ -23,7 +23,7 @@ static void initConfigure(GlobalParameter *gp)
 #ifdef Q_OS_ANDROID
     //希望获得设备的屏幕大小，以来设置参数
     gp->windowsWidth = 320;//QApplication::desktop()->width();
-    gp->windowsHeight = 480;//QApplication::desktop()->height();
+    gp->windowsHeight = 480 - 30;//QApplication::desktop()->height();
 #else
     gp->windowsWidth = 320;
     gp->windowsHeight = 440;
@@ -105,7 +105,7 @@ int main(int argc, char* argv[])
 
     Space sw;
 #ifdef Q_OS_ANDROID
-    sw.showMaximized();
+    sw.showFullScreen();
 #else
     sw.resize(GlobalParameter::instance()->windowsWidth,
               GlobalParameter::instance()->windowsHeight);
