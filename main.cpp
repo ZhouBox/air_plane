@@ -20,12 +20,14 @@ static void initConfigure(GlobalParameter *gp)
     QPainterPath p;
     p.addRect(QRectF(0, 0, 5, 10));
     gp->_1bulletOutline = p;
+#ifdef Q_OS_ANDROID
+    //希望获得设备的屏幕大小，以来设置参数
     gp->windowsWidth = 320;//QApplication::desktop()->width();
-    gp->windowsHeight = 440;//QApplication::desktop()->height();
-
-    //    gp->windowsWidth = QApplication::desktop()->width() - 20;
-    //    gp->windowsHeight = QApplication::desktop()->height() - 50;
-
+    gp->windowsHeight = 480;//QApplication::desktop()->height();
+#else
+    gp->windowsWidth = 320;
+    gp->windowsHeight = 440;
+#endif
 
     QPixmap pix("://image/player.png");
     gp->playerPlanePixmap << pix;
@@ -102,13 +104,15 @@ int main(int argc, char* argv[])
 
 
     Space sw;
+#ifdef Q_OS_ANDROID
+    sw.showMaximized();
+#else
     sw.resize(GlobalParameter::instance()->windowsWidth,
               GlobalParameter::instance()->windowsHeight);
     sw.move(QApplication::desktop()->rect().center() -
             QPoint(GlobalParameter::instance()->windowsWidth/2,
                    GlobalParameter::instance()->windowsHeight/2));
     sw.show();
-
-
+#endif
     return app.exec();
 }
