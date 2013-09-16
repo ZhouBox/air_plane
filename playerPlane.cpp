@@ -269,7 +269,6 @@ void PlayerPlane::fall()
 {
     FlightVehicle::fall();
     willFall = true;
-    m_speed = 1;
 }
 
 void PlayerPlane::falling()
