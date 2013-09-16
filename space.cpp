@@ -13,6 +13,7 @@ Space::Space(QWidget *parent) :
     _0blood("- - -")
 {
     setScene(&m_scene);
+    setMouseTracking(true);
     setWindowFlags(Qt::FramelessWindowHint);
     QPalette palette;
     palette.setColor(backgroundRole(), QColor(0,0,51));
@@ -91,7 +92,7 @@ void Space::createEnemyM()
     //    for (int i = 0;i < num; ++i) {
     int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT);
     FlightVehicle *epl = new EnemyPlane(GlobalParameter::instance()->enemyPlaneMPixmap,MIDDLEBLOODS,
-                                        Randomizer::creat(1,8),&m_scene);
+                                        Randomizer::creat(4,12),&m_scene);
 
     epl->setPos(x,0);
     connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
@@ -106,7 +107,7 @@ void Space::createEnemyL()
     //    for (int i = 0;i < num; ++i) {
     int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT - 30);
     FlightVehicle *epl = new EnemyPlane(GlobalParameter::instance()->enemyPlaneLPixmap,LARGERBLOODS,
-                                        Randomizer::creat(1,5),&m_scene);
+                                        Randomizer::creat(2,6),&m_scene);
 
     epl->setPos(x,0);
     connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
@@ -159,16 +160,16 @@ void Space::slt_addScore(int score)
             createEnemyM();
         }
 
-        if( m_scoringCounter.score() % (32000 / 1000) == 0)  {
+        if( m_scoringCounter.score() % (36000 / 1000) == 0)  {
             createEnemyL();
         }
 
 
-        if( m_scoringCounter.score() % (100000 / 1000) == 0)  {
+        if( m_scoringCounter.score() % (86000 / 1000) == 0)  {
             slt_bulletSupply();
         }
 
-        if (m_scoringCounter.score() % (180000 / 1000) == 0) {
+        if (m_scoringCounter.score() % (114000 / 1000) == 0) {
             createAbomb();
         }
     }
@@ -304,7 +305,7 @@ void Space::slt_updataBlood(int i)
         setBloodsText(_0blood);
         break;
     default:
-        setBloodsText("error");
+        setBloodsText(_0blood);
         break;
     }
 
@@ -355,6 +356,16 @@ void Space::mouseDoubleClickEvent(QMouseEvent *e)
     }
     e->accept();
 
+}
+
+void Space::mouseMoveEvent(QMouseEvent *event)
+{
+    if (!this->rect().contains(event->pos())) {
+        m_player->setFlag(QGraphicsItem::ItemIsMovable, false);
+    } else {
+        m_player->setFlag(QGraphicsItem::ItemIsMovable, true);
+    }
+    QGraphicsView::mouseMoveEvent(event);
 }
 
 void Space::doAbomb()

@@ -36,7 +36,7 @@ public slots:
 
 protected:
     void mouseDoubleClickEvent(QMouseEvent *e);
-
+    void mouseMoveEvent(QMouseEvent *event);
 protected slots:
     void slt_updata();
 
