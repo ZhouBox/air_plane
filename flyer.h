@@ -75,7 +75,7 @@ public:
     virtual void fall(){
         setFlag(QGraphicsItem::ItemIsMovable, false);
         setFlag(QGraphicsItem::ItemIsFocusable, false);
-        emit sig_fall();
+        //emit sig_fall();
     }
 
 

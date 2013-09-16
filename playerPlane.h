@@ -77,6 +77,8 @@ public:
 
     virtual void doCollide();
 
+    virtual void fall();
+
 public slots:
     /**
      * @brief shoot 射击
@@ -144,6 +146,8 @@ private:
     void collides(Flyer *fv, int flag);
 
     void timerReduce(BulletFactory::BULLETFLAG flag);
+
+    void falling();
 
 
 

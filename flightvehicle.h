@@ -15,7 +15,9 @@ public:
                   QGraphicsScene *scene,QGraphicsItem *parent = 0):Flyer(speed, scene, parent),
         m_currentFrame(0),
         m_bloods(bloods),
-        m_blood(bloods){
+        m_blood(bloods),
+        willFall(false),
+        m_steps(animation.length() - 1){
         for (int i = 0; i < animation.size(); ++i) {
             QPixmap pixmap = animation.at(i);
             Frame frame;
@@ -122,6 +124,11 @@ protected:
 
 
     QList<Frame> m_frames;
+
+
+    bool willFall;
+
+    int m_steps;
 
 
     void setFrame(int frame) {

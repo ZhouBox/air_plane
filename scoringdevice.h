@@ -16,7 +16,10 @@ public:
     ScoringDevice& operator --();
     ScoringDevice operator --(int);
     ScoringDevice operator +(int x);
-    void clear();
+    void clear() {
+        m_score = 0;
+    }
+
     int score() const {
         return m_score;
     }

@@ -90,7 +90,7 @@ void Bullet::doCollide()
                 fv->strike();
                 if (fv->destroy()) {
                     fv->fall();
-                    //缓存起来
+                    //缓存起来,未加入
                 }
 
             }

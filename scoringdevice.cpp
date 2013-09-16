@@ -31,13 +31,6 @@ ScoringDevice& ScoringDevice::operator --()
     return *this;
 }
 
-void ScoringDevice::clear()
-{
-    m_score = 0;
-}
-
-
-
 ScoringDevice ScoringDevice::operator +(int x)
 {
     m_score += x;

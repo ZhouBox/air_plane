@@ -26,6 +26,14 @@
 
 #define BOMB 12//炸弹
 
+
+#define LITTLEBLOODS 1 // 小飞机的血量
+
+#define MIDDLEBLOODS 7 //中飞机的血量
+
+#define LARGERBLOODS 12 //大飞机的血量
+
+
 typedef QList<QPixmap> QPixmaps;
 
 class FlightVehicle;

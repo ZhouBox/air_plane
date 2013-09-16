@@ -7,7 +7,7 @@
 
 
 /**
- * @brief The EnemyPlane class 小型敌机
+ * @brief The EnemyPlane class 敌机
  */
 
 class EnemyPlane : public FlightVehicle

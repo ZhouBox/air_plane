@@ -22,6 +22,9 @@ QRectF PlayerPlane::boundingRect() const
 void PlayerPlane::paint(QPainter *painter, const QStyleOptionGraphicsItem */*option*/, QWidget */*widget*/)
 {
     painter->drawPixmap(0, 0, m_frames.at(m_currentFrame).pixmap);
+    if (willFall) {
+        falling();
+    }
 }
 
 
@@ -260,6 +263,23 @@ void PlayerPlane::slt_resetBulletFlag()
         m_bulletFlag = BulletFactory::_1;
     }
 
+}
+
+void PlayerPlane::fall()
+{
+    FlightVehicle::fall();
+    willFall = true;
+    m_speed = 1;
+}
+
+void PlayerPlane::falling()
+{
+    ++m_currentFrame;
+    if (m_currentFrame > m_steps) {
+        --m_currentFrame;
+        setVisible(false);
+        emit sig_fall();
+    }
 }
 
 

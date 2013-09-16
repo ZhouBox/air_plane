@@ -5,6 +5,10 @@
 
 #include <QPainter>
 
+/**
+ * @brief The Bomb class 炸弹类
+ */
+
 class Bomb : public Flyer
 {
 public:

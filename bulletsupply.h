@@ -6,6 +6,10 @@
 
 #include <QPainter>
 
+/**
+ * @brief The BulletSupply class 弹药补给
+ */
+
 class BulletSupply : public Flyer
 {
 public:

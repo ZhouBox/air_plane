@@ -4,6 +4,10 @@
 #include <bullet.h>
 #include <QGraphicsScene>
 
+/**
+ * @brief The BulletFactory class 子弹的工厂类
+ */
+
 class BulletFactory
 {
 public:

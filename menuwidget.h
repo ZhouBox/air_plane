@@ -6,6 +6,11 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 
+
+/**
+ * @brief The MenuWidget class 菜单窗体
+ */
+
 class MenuWidget : public QDialog
 {
     Q_OBJECT

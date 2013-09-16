@@ -25,6 +25,6 @@ e-mail:zhx910322@163.com 604487178@qq.com
 @修复一个bug，玩家飞机停留在可视范围内
 
 #对动画的实现报告，图像的改变要等到view层的下一个重绘，因为可能太快的原因，动画效果很差，现在只是实现了玩家飞机，详细代码见
-PlayerPlane类，fall和falling函数
+PlayerPlane类中的fall,fallingh和paint函数
 
 

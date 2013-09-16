@@ -5,6 +5,10 @@
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 
+/**
+ * @brief The MenuItem class 菜单项
+ */
+
 class MenuItem : public CustomItem
 {
     Q_OBJECT

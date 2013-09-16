@@ -13,7 +13,6 @@ Space::Space(QWidget *parent) :
     _0blood("- - -")
 {
     setScene(&m_scene);
-    setMouseTracking(true);
     setWindowFlags(Qt::FramelessWindowHint);
     QPalette palette;
     palette.setColor(backgroundRole(), QColor(0,0,51));
@@ -147,9 +146,6 @@ void Space::timersStart()
     m_timer_updata.start(1000/24);
 }
 
-
-
-
 void Space::slt_addScore(int score)
 {
     m_scoringCounter + score;
@@ -187,8 +183,6 @@ void Space::slt_newGame()
     m_player->setFocus();
     timersStart();
     m_isRunning = true;
-
-
 }
 
 
@@ -311,6 +305,10 @@ void Space::slt_updataBlood(int i)
 
 }
 
+/**
+ * @brief Space::reInit
+ * @note 废弃未使用
+ */
 void Space::reInit()
 {
     showResult->setVisible(false);

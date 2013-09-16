@@ -102,14 +102,7 @@ private:
     void setBloodsText(const QString &text);
     void setBombText(int val);
     void createEnemyM();
-    void createEnemyL();
-
-
-
-
-
-
-    
+    void createEnemyL();    
 };
 
 #endif // SPACE_H
