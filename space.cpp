@@ -73,15 +73,8 @@ void Space::slt_enemys()
 
     for (int i = 0;i < num; ++i) {
         int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT);
-        FlightVehicle *epl = NULL;
-        // if (GlobalParameter::instance()->p_eplC->isEmpty()) {
-        epl = new EnemyPlane(GlobalParameter::instance()->enemyPlanePixmap,1,
-                             /*GlobalParameter::instance()->enemyPlaneLittleSpeed*/Randomizer::creat(6,13),&m_scene);
-        // } else {
-        //     epl = GlobalParameter::instance()->p_eplC->front();
-        //     GlobalParameter::instance()->p_eplC->pop_front();
-        //     epl->setSpeed(Randomizer::creat(6,25));
-        // }
+        FlightVehicle *epl = new EnemyPlane(GlobalParameter::instance()->enemyPlanePixmap,LITTLEBLOODS,
+                                            Randomizer::creat(6,13),&m_scene);
         epl->setPos(x,0);
         connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
 
@@ -93,44 +86,32 @@ void Space::slt_enemys()
 
 void Space::createEnemyM()
 {
-//    int num = Randomizer::creat(2);
+    //    int num = Randomizer::creat(2);
 
-//    for (int i = 0;i < num; ++i) {
-        int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT);
-        FlightVehicle *epl = NULL;
-        // if (GlobalParameter::instance()->p_eplC->isEmpty()) {
-        epl = new EnemyPlane(GlobalParameter::instance()->enemyPlaneMPixmap,7,
-                             /*GlobalParameter::instance()->enemyPlaneLittleSpeed*/Randomizer::creat(1,8),&m_scene);
-        // } else {
-        //     epl = GlobalParameter::instance()->p_eplC->front();
-        //     GlobalParameter::instance()->p_eplC->pop_front();
-        //     epl->setSpeed(Randomizer::creat(6,25));
-        // }
-        epl->setPos(x,0);
-        connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
+    //    for (int i = 0;i < num; ++i) {
+    int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT);
+    FlightVehicle *epl = new EnemyPlane(GlobalParameter::instance()->enemyPlaneMPixmap,MIDDLEBLOODS,
+                                        Randomizer::creat(1,8),&m_scene);
 
-//    }
+    epl->setPos(x,0);
+    connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
+
+    //    }
 }
 
 void Space::createEnemyL()
 {
-//    int num = Randomizer::creat(2);
+    //    int num = Randomizer::creat(2);
 
-//    for (int i = 0;i < num; ++i) {
-        int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT - 30);
-        FlightVehicle *epl = NULL;
-        // if (GlobalParameter::instance()->p_eplC->isEmpty()) {
-        epl = new EnemyPlane(GlobalParameter::instance()->enemyPlaneLPixmap,12,
-                             /*GlobalParameter::instance()->enemyPlaneLittleSpeed*/Randomizer::creat(1,5),&m_scene);
-        // } else {
-        //     epl = GlobalParameter::instance()->p_eplC->front();
-        //     GlobalParameter::instance()->p_eplC->pop_front();
-        //     epl->setSpeed(Randomizer::creat(6,25));
-        // }
-        epl->setPos(x,0);
-        connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
+    //    for (int i = 0;i < num; ++i) {
+    int x = Randomizer::creat(GlobalParameter::instance()->windowsWidth - PIXMAPWEIGHT - 30);
+    FlightVehicle *epl = new EnemyPlane(GlobalParameter::instance()->enemyPlaneLPixmap,LARGERBLOODS,
+                                        Randomizer::creat(1,5),&m_scene);
 
-//    }
+    epl->setPos(x,0);
+    connect(epl, SIGNAL(sig_addScore(int)), this, SLOT(slt_addScore(int)));
+
+    //    }
 }
 
 void Space::slt_bulletSupply()
@@ -420,6 +401,8 @@ void Space::setBombText(int val)
     this->bomb->setHtml(tr("<b><font color=white>Bomb:x%1</font></b>").arg(QString::number(val)));
 
 }
+
+
 
 
 
