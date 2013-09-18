@@ -31,7 +31,8 @@ public:
 
     virtual void posLost();
 
-    virtual void fall();
+
+    virtual void falling(int step);
 
 
     virtual int name() const;

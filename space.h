@@ -43,6 +43,9 @@ protected slots:
     void slt_enemys();//产生敌机
 
 
+    /**
+     * @brief slt_playerDead 玩家飞机被击落调用
+     */
     void slt_playerDead();
 
 

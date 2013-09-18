@@ -70,20 +70,25 @@ void EnemyPlane::posLost()
     deleteLater();
 }
 
-void EnemyPlane::fall()
-{
-    setVisible(false);
-    deleteLater();
-    if (m_style == LITTLE) {
-        emit sig_addScore(LITTLE_SCORE);
-    } else {
-        if (m_style == MIDDLE) {
-            emit sig_addScore(MIDDLE_SCORE);
-        } else{
-            emit sig_addScore(LARGER_SCORE);
-        }
-    }
 
+void EnemyPlane::falling(int step)
+{
+    if (step < m_steps) {
+        setFrame(step);
+    } else {
+        p_timerLine->stop();
+        setVisible(false);
+        if (m_style == LITTLE) {
+            emit sig_addScore(LITTLE_SCORE);
+        } else {
+            if (m_style == MIDDLE) {
+                emit sig_addScore(MIDDLE_SCORE);
+            } else{
+                emit sig_addScore(LARGER_SCORE);
+            }
+        }
+        deleteLater();
+    }
 }
 
 

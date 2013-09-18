@@ -37,7 +37,8 @@ SOURCES += \
     textitem.cpp \
     bulletsupply.cpp \
     enemyplane.cpp \
-    bomb.cpp
+    bomb.cpp \
+    flightvehicle.cpp
 
 OTHER_FILES += \
     备注 \

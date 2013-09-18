@@ -4,6 +4,8 @@
 #include "flyer.h"
 #include "frame.h"
 
+#include <QTimeLine>
+
 /**
  * @brief The FlightVehicle class 飞行器基类，继承自飞行物体类
  */
@@ -17,7 +19,7 @@ public:
         m_bloods(bloods),
         m_blood(bloods),
         willFall(false),
-        m_steps(animation.length() - 1){
+        m_steps(animation.length()){
         for (int i = 0; i < animation.size(); ++i) {
             QPixmap pixmap = animation.at(i);
             Frame frame;
@@ -70,6 +72,10 @@ public:
         return m_blood;
     }
 
+    virtual void fall();
+
+    virtual void falling(int step);
+
 
 
 
@@ -91,6 +97,7 @@ signals:
     void sig_bulletTimes(int flag, int sec);
 
     void sig_aBomb();
+
 
 protected slots:
     /**
@@ -129,6 +136,10 @@ protected:
     bool willFall;
 
     int m_steps;
+
+    QTimeLine *p_timerLine;
+
+
 
 
     void setFrame(int frame) {

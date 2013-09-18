@@ -89,6 +89,7 @@ public slots:
 
 signals:
 
+
 protected:
     /**
      * @brief keyPressEvent 响应wasd按键
@@ -147,7 +148,6 @@ private:
 
     void timerReduce(BulletFactory::BULLETFLAG flag);
 
-    void falling();
 
 
 

@@ -78,6 +78,11 @@ public:
         //emit sig_fall();
     }
 
+protected slots:
+    virtual void falling(int /*step*/) {
+
+    }
+
 
 signals:
     void sig_fall();

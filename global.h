@@ -3,6 +3,13 @@
 
 
 #include <QPainterPath>
+#include <QDebug>
+
+
+#define logger() qDebug()
+
+
+
 
 
 

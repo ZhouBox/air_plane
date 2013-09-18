@@ -60,8 +60,8 @@ static void initConfigure(GlobalParameter *gp)
     gp->enemyPlaneMPixmap << pix;
     pix.load("://image/enemyM_die4.png");
     gp->enemyPlaneMPixmap << pix;
-    pix.load("://image/enemyM_hurt.png");
-    gp->enemyPlaneMPixmap << pix;
+    // pix.load("://image/enemyM_hurt.png");
+    // gp->enemyPlaneMPixmap << pix;
 
 
     pix.load("://image/enemyL.png");
@@ -76,8 +76,8 @@ static void initConfigure(GlobalParameter *gp)
     gp->enemyPlaneLPixmap << pix;
     pix.load("://image/enemyL_die5.png");
     gp->enemyPlaneLPixmap << pix;
-    pix.load("://image/enemyL_hurt.png");
-    gp->enemyPlaneLPixmap << pix;
+    // pix.load("://image/enemyL_hurt.png");
+    // gp->enemyPlaneLPixmap << pix;
 
 
     pix.load("://image/bulletA.png");

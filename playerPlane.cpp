@@ -22,9 +22,6 @@ QRectF PlayerPlane::boundingRect() const
 void PlayerPlane::paint(QPainter *painter, const QStyleOptionGraphicsItem */*option*/, QWidget */*widget*/)
 {
     painter->drawPixmap(0, 0, m_frames.at(m_currentFrame).pixmap);
-    if (willFall) {
-        falling();
-    }
 }
 
 
@@ -40,12 +37,12 @@ void PlayerPlane::keyPressEvent(QKeyEvent *event)
         event->accept();
         break;
     case Qt::Key_A://向左移动
-//        leftPosture();
+        //        leftPosture();
         moveLeft();
         event->accept();
         break;
     case Qt::Key_D://向右移动
-//        rightPosture();
+        //        rightPosture();
         moveRight();
         event->accept();
         break;
@@ -137,27 +134,32 @@ void PlayerPlane::moveRight()
 
 void PlayerPlane::shoot()
 {
-    BulletFactory::Bullets bp = BulletFactory::creator(m_bulletFlag, scene());
-    QPointF p = scenePos();
-    //40/2是让子弹在图片的中间发射
+    if (willFall) {
 
-    p.ry() -= 20;
-    if (m_bulletFlag == BulletFactory::_1) {
-        p.rx() += 46/4 * 2;
-        foreach (Bullet* b, bp) {
-            b->setPos(p);
-        }
     } else {
-        if (m_bulletFlag == BulletFactory::_2) {
-            p.rx() += 46/4 * 1;
-            foreach (Bullet* b, bp) {
-                b->setPos(p);
-                p.rx() += 46/4 * 2;
-            }
-        } else {
+
+        BulletFactory::Bullets bp = BulletFactory::creator(m_bulletFlag, scene());
+        QPointF p = scenePos();
+        //40/2是让子弹在图片的中间发射
+
+        p.ry() -= 20;
+        if (m_bulletFlag == BulletFactory::_1) {
             p.rx() += 46/4 * 2;
             foreach (Bullet* b, bp) {
                 b->setPos(p);
+            }
+        } else {
+            if (m_bulletFlag == BulletFactory::_2) {
+                p.rx() += 46/4 * 1;
+                foreach (Bullet* b, bp) {
+                    b->setPos(p);
+                    p.rx() += 46/4 * 2;
+                }
+            } else {
+                p.rx() += 46/4 * 2;
+                foreach (Bullet* b, bp) {
+                    b->setPos(p);
+                }
             }
         }
     }
@@ -266,19 +268,10 @@ void PlayerPlane::slt_resetBulletFlag()
 
 void PlayerPlane::fall()
 {
-    FlightVehicle::fall();
     willFall = true;
+    FlightVehicle::fall();
 }
 
-void PlayerPlane::falling()
-{
-    ++m_currentFrame;
-    if (m_currentFrame > m_steps) {
-        --m_currentFrame;
-        setVisible(false);
-        emit sig_fall();
-    }
-}
 
 
 
