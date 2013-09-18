@@ -134,10 +134,7 @@ void PlayerPlane::moveRight()
 
 void PlayerPlane::shoot()
 {
-    if (willFall) {
-
-    } else {
-
+    if (!willFall) {
         BulletFactory::Bullets bp = BulletFactory::creator(m_bulletFlag, scene());
         QPointF p = scenePos();
         //40/2是让子弹在图片的中间发射
