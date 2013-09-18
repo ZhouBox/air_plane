@@ -34,6 +34,12 @@
 #define LARGERBLOODS 12 //大飞机的血量
 
 
+//使用下面这个比较好，不要使用宏
+const int LITTLE_SCORE = 1; //小 分数
+const int MIDDLE_SCORE = 5; //中 分数
+const int LARGER_SCORE = 10; //大 分数
+
+
 typedef QList<QPixmap> QPixmaps;
 
 class FlightVehicle;

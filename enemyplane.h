@@ -13,8 +13,10 @@
 class EnemyPlane : public FlightVehicle
 {
 public:
+    typedef enum{LITTLE, MIDDLE, LARGER} STYLE;
+
     EnemyPlane(const QList<QPixmap> &animation, uint bloods,
-                     uint speed, QGraphicsScene *scene,QGraphicsItem *parent = 0);
+               uint speed, QGraphicsScene *scene,QGraphicsItem *parent = 0);
     virtual ~EnemyPlane(){}
 
     QRectF boundingRect() const;
@@ -39,6 +41,14 @@ public:
 
     }
 
+    /**
+     * @brief style 那类飞机
+     * @return
+     */
+    STYLE style() const {
+        return m_style;
+    }
+
 
 
 public slots:
@@ -58,7 +68,7 @@ protected slots:
     }
 private:
 
-    typedef enum{LITTLE, MIDDLE, LARGER} STYLE;
+
 
     STYLE m_style;
 
