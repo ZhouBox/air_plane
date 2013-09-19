@@ -3,8 +3,6 @@
 
 #include <QGraphicsView>
 #include <QTimer>
-#include <QMessageBox>
-#include <exception>
 #include <QScopedPointer>
 
 #include "playerPlane.h"
@@ -105,7 +103,13 @@ private:
     void setBloodsText(const QString &text);
     void setBombText(int val);
     void createEnemyM();
-    void createEnemyL();    
+    void createEnemyL();
+
+    /**
+     * @brief levelAdding 难度算法，f(x) = 3/2000000 * x;
+     * @param socre 当前的分数
+     */
+    void levelAdding(uint socre);
 };
 
 #endif // SPACE_H

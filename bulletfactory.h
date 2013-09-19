@@ -1,8 +1,9 @@
 #ifndef BULLETFACTORY_H
 #define BULLETFACTORY_H
 
-#include <bullet.h>
-#include <QGraphicsScene>
+#include "bullet.h"
+
+class QGraphicsScene;
 
 /**
  * @brief The BulletFactory class 子弹的工厂类

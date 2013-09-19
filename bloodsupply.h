@@ -4,7 +4,6 @@
 #include "flyer.h"
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
-#include "customitem.h"
 
 /**
  * @brief The BloodSupply class 生命补给
