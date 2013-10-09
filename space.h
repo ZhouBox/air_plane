@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QTimer>
 #include <QScopedPointer>
+#include <QtOpenGL/QGLWidget>
 
 #include "playerPlane.h"
 #include "enemyplane.h"

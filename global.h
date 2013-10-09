@@ -46,15 +46,15 @@ const int LITTLE_SCORE = 1; //小 分数
 const int MIDDLE_SCORE = 5; //中 分数
 const int LARGER_SCORE = 10; //大 分数
 
-const int LEVEL_VALUE = 500000;//难度边界值
+const int LEVEL_VALUE = 100000;//难度边界值
 
-const int ENEMYL_LITTLE_LEVEL_FACTOR = 3;//难度发生的因子
+const int ENEMYL_LITTLE_LEVEL_FACTOR = 2;//难度发生的因子
 
-const int ENEMYL_MIDDLE_LEVEL_FACTOR = 2;
+const int ENEMYL_MIDDLE_LEVEL_FACTOR = 1;
 
-const int ENEMYL_LARGER_LEVEL_FACTOR = 2;
+const int ENEMYL_LARGER_LEVEL_FACTOR = 1;
 
-const int LEVEL = 3;
+const double LEVEL = 3.0;
 
 
 typedef QList<QPixmap> QPixmaps;

@@ -28,6 +28,7 @@ Space::Space(QWidget *parent) :
     setOptimizationFlags(QGraphicsView::DontClipPainter
                          | QGraphicsView::DontSavePainterState);
     setRenderHint(QPainter::Antialiasing);
+    setViewport(new QGLWidget());
 
     connect(&m_timer_updata, SIGNAL(timeout()), this, SLOT(slt_updata()));
 
@@ -264,7 +265,7 @@ void Space::slt_menu()
         slt_pauseGame();
         QScopedPointer<MenuWidget> w(new MenuWidget(true, this));
         connect(w.data(), SIGNAL(sig_newGame()), this, SLOT(slt_newGame()));
-        connect(w.data(), SIGNAL(sig_quit()), this, SLOT(close()));
+        connect(w.data(), SIGNAL(sig_quit()), this, SLOT(close()), Qt::QueuedConnection);
         w->setModal(true);
         w->show();
         w->exec();
@@ -272,7 +273,7 @@ void Space::slt_menu()
     } else {
         QScopedPointer<MenuWidget> w(new MenuWidget(m_isRunning, this));
         connect(w.data(), SIGNAL(sig_newGame()), this, SLOT(slt_newGame()));
-        connect(w.data(), SIGNAL(sig_quit()), this, SLOT(close()));
+        connect(w.data(), SIGNAL(sig_quit()), this, SLOT(close()), Qt::QueuedConnection);
         w->setModal(true);
         w->show();
         w->exec();
@@ -418,6 +419,7 @@ void Space::levelAdding(uint socre)
 
     } else {
         GlobalParameter::instance()->level = (LEVEL / LEVEL_VALUE) * socre;
+        //logger() << GlobalParameter::instance()->level;
     }
 
 }

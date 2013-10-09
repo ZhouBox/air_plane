@@ -1,5 +1,6 @@
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+contains(QT_CONFIG, opengl): QT += opengl
 
 HEADERS += \
     flyer.h \
