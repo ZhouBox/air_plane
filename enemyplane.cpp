@@ -1,5 +1,12 @@
 #include "enemyplane.h"
 
+
+#ifdef OBJ_CACHE
+QList<void*>* EnemyPlane::m_obj_buffer = new QList<void*>();
+#else
+QList<void*>* EnemyPlane::m_obj_buffer = NULL;
+#endif
+
 EnemyPlane::EnemyPlane(const QList<QPixmap> &animation,
                        uint bloods, uint speed,
                        QGraphicsScene *scene, QGraphicsItem *parent):
@@ -91,4 +98,40 @@ void EnemyPlane::falling(int step)
     }
 }
 
+
+void* EnemyPlane::operator new(size_t size)
+{
+#ifdef OBJ_CACHE
+    void *re = 0;
+    if (m_obj_buffer->empty()) {
+        re = static_cast<void*>(new char[size]);
+        m_obj_buffer->append(re);
+    } else {
+        re = m_obj_buffer->front();
+        m_obj_buffer->pop_front();
+    }
+    return re;
+#else
+    return ::operator new(size);
+#endif
+
+}
+
+void EnemyPlane::operator delete(void *p)
+{
+#ifdef OBJ_CACHE
+    m_obj_buffer->append(p);
+#else
+    ::operator delete(p);
+#endif
+}
+
+void EnemyPlane::clear_all()
+{
+#ifdef OBJ_CACHE
+    qDeleteAll(*m_obj_buffer);
+    delete m_obj_buffer;
+#else
+#endif
+}
 

@@ -200,6 +200,9 @@ void PlayerPlane::collides(Flyer *fv,int flag)
 {
     switch (flag) {
     case ENEMYPLANE:
+        if (fv->has_fall()) {
+            break;
+        }
         fv->fall();
         strike();
         if (destroy()) {
@@ -265,7 +268,7 @@ void PlayerPlane::slt_resetBulletFlag()
 
 void PlayerPlane::fall()
 {
-    willFall = true;
+    //willFall = true;
     FlightVehicle::fall();
 }
 

@@ -6,6 +6,9 @@
 #include <QPainter>
 
 
+//#define OBJ_CACHE
+
+
 /**
  * @brief The EnemyPlane class 敌机
  */
@@ -20,7 +23,7 @@ public:
     virtual ~EnemyPlane(){}
 
     QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);\
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
 
     virtual void autofly();
@@ -51,6 +54,17 @@ public:
     }
 
 
+    static void* operator new(size_t size);
+
+    static void operator delete(void *p);
+
+
+    static QList<void*> *m_obj_buffer;
+
+
+    static void clear_all();
+
+
 
 public slots:
     virtual void shoot() {
@@ -72,6 +86,8 @@ private:
 
 
     STYLE m_style;
+
+
 
 
 

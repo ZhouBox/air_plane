@@ -1,17 +1,17 @@
 #include "menuwidget.h"
 
-MenuWidget::MenuWidget(bool isRunning, QWidget *parent) :
+MenuWidget::MenuWidget(QWidget *parent, bool isRunning) :
     QDialog(parent),
     states(isRunning)
 {
     setWindowFlags(Qt::FramelessWindowHint);
     initUI();
-    setMinimumSize(150,300);
-    setMaximumSize(150,300);
-    move(parent->rect().center() - QPoint(150/2,300/2));
+    setMinimumSize(100,200);
+    setMaximumSize(100,200);
+    //move(parent->rect().center() - QPoint(150/2,300/2));
     connect(m_new, SIGNAL(clicked()), this, SLOT(slt_newGame()));
     connect(m_quit, SIGNAL(clicked()), this ,SLOT(slt_quit()));
-    connect(m_back, SIGNAL(clicked()), this, SLOT(close()));
+    connect(m_back, SIGNAL(clicked()), this, SLOT(slt_back()));
 
 }
 
@@ -29,12 +29,18 @@ void MenuWidget::initUI()
     mainLayout->addStretch();
 
     setLayout(mainLayout);
+}
 
+
+void MenuWidget::setRunning(bool isRunning)
+{
+    states = isRunning;
     if (states) {
         m_new->setDisabled(true);
-
+        m_back->setDisabled(false);
     } else {
         m_back->setDisabled(true);
+        m_new->setDisabled(false);
     }
 }
 
@@ -47,5 +53,9 @@ void MenuWidget::slt_quit()
 void MenuWidget::slt_newGame()
 {
     emit sig_newGame();
-    close();
+}
+
+void MenuWidget::slt_back()
+{
+    emit sig_back();
 }

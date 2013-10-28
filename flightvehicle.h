@@ -18,7 +18,6 @@ public:
         m_currentFrame(0),
         m_bloods(bloods),
         m_blood(bloods),
-        willFall(false),
         m_steps(animation.length()){
         for (int i = 0; i < animation.size(); ++i) {
             QPixmap pixmap = animation.at(i);
@@ -80,6 +79,7 @@ public:
 
 
 
+
 public slots:
     virtual void shoot() = 0;
 
@@ -133,7 +133,6 @@ protected:
     QList<Frame> m_frames;
 
 
-    bool willFall;
 
     int m_steps;
 

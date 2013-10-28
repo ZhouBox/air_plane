@@ -17,7 +17,8 @@ class Flyer : public QGraphicsObject
     Q_OBJECT
 public:
     Flyer(uint speed, QGraphicsScene *scene, QGraphicsItem *parent = 0):QGraphicsObject(parent),
-        m_speed(speed){
+        m_speed(speed),
+        willFall(false) {
         scene->addItem(this);
     }
     virtual ~Flyer() {}
@@ -78,6 +79,13 @@ public:
         //emit sig_fall();
     }
 
+    bool has_fall() const {
+        return willFall;
+    }
+
+
+
+
 protected slots:
     virtual void falling(int /*step*/) {
 
@@ -100,6 +108,9 @@ protected:
      * @brief m_speed 移动速度
      */
     uint m_speed;
+
+    bool willFall;
+
 };
 
 
@@ -123,7 +134,7 @@ bool Flyer::checkPos(CHECK_FLAG flag)
     switch (flag) {
     case Front:
         //比较代码
-        if (scenePos().ry() > 0) {
+        if (scenePos().ry() > 40) {
             re = true;
         }
         break;

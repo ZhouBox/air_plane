@@ -8,6 +8,7 @@
 
 void FlightVehicle::fall()
 {
+    willFall = true;
     m_speed = 0;
     p_timerLine = new QTimeLine(1000/24 * 1.5 * m_steps, this);
     p_timerLine->setUpdateInterval(1000/24 * 1.5);

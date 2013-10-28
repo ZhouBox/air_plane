@@ -38,6 +38,7 @@ Space::Space(QWidget *parent) :
 Space::~Space()
 {
     delete GlobalParameter::instance()->p_eplC;
+    EnemyPlane::clear_all();
 }
 
 void Space::slt_updata()
@@ -147,6 +148,12 @@ void Space::timersStart()
     m_timer_updata.start(1000/24);
 }
 
+
+/**
+ * @brief Space::slt_addScore 加入随机算法很垃圾，希望可以把它独立出来
+ * @param score
+ */
+
 void Space::slt_addScore(int score)
 {
     m_scoringCounter + score;
@@ -177,6 +184,7 @@ void Space::slt_addScore(int score)
 void Space::slt_newGame()
 {
     //GlobalParameter::instance()->p_eplC->clear();
+    p_proxy_menu_widgt->setVisible(false);
     m_scene.clear();
     initSome();
     setBloodsText(_3blood);
@@ -200,6 +208,7 @@ void Space::slt_startGame()
         timersStart();
         m_player->setFocus();
     }
+    p_proxy_menu_widgt->setVisible(false);
 
 }
 
@@ -218,6 +227,15 @@ void Space::slt_level(int level)
 
 void Space::initSome()
 {
+    p_menuWidget = new MenuWidget();
+    p_proxy_menu_widgt = m_scene.addWidget(p_menuWidget, Qt::FramelessWindowHint | Qt::Popup);
+
+    p_proxy_menu_widgt->setVisible(false);
+
+    connect(p_menuWidget, SIGNAL(sig_newGame()), this, SLOT(slt_newGame()),Qt::QueuedConnection);
+    connect(p_menuWidget, SIGNAL(sig_quit()), this, SLOT(close()), Qt::QueuedConnection);
+    connect(p_menuWidget, SIGNAL(sig_back()), this, SLOT(slt_startGame()), Qt::QueuedConnection);
+
     m_step = 0;
     m_menu = new MenuItem();
     m_scene.addItem(m_menu);
@@ -261,23 +279,18 @@ void Space::initSome()
 
 void Space::slt_menu()
 {
+    QPoint point = this->rect().center();
+    QPoint c;
+    c.setX(point.rx() - p_proxy_menu_widgt->widget()->width()/2);
+    c.setY(point.ry() - p_proxy_menu_widgt->widget()->height()/2);
+    p_proxy_menu_widgt->setPos(c);
     if (m_isRunning) {
         slt_pauseGame();
-        QScopedPointer<MenuWidget> w(new MenuWidget(true, this));
-        connect(w.data(), SIGNAL(sig_newGame()), this, SLOT(slt_newGame()));
-        connect(w.data(), SIGNAL(sig_quit()), this, SLOT(close()), Qt::QueuedConnection);
-        w->setModal(true);
-        w->show();
-        w->exec();
-        slt_startGame();
+        p_menuWidget->setRunning(m_isRunning);
     } else {
-        QScopedPointer<MenuWidget> w(new MenuWidget(m_isRunning, this));
-        connect(w.data(), SIGNAL(sig_newGame()), this, SLOT(slt_newGame()));
-        connect(w.data(), SIGNAL(sig_quit()), this, SLOT(close()), Qt::QueuedConnection);
-        w->setModal(true);
-        w->show();
-        w->exec();
+        p_menuWidget->setRunning(m_isRunning);
     }
+    p_proxy_menu_widgt->setVisible(true);
 }
 
 void Space::slt_updataScore(int score)

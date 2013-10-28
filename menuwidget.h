@@ -15,17 +15,19 @@ class MenuWidget : public QDialog
 {
     Q_OBJECT
 public:
-    explicit MenuWidget(bool isRunning, QWidget *parent = 0);
-    
+    explicit MenuWidget(QWidget *parent = 0, bool isRunning = false);
+    void setRunning(bool isRunning);
+
 signals:
     void sig_newGame();
     void sig_quit();
-    
+    void sig_back();
 public slots:
 
 protected slots:
     void slt_quit();
     void slt_newGame();
+    void slt_back();
 
 private:
     //QStackedWidget *m_workSpace;

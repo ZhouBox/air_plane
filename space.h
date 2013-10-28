@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QScopedPointer>
 #include <QtOpenGL/QGLWidget>
+#include <QGraphicsProxyWidget>
 
 #include "playerPlane.h"
 #include "enemyplane.h"
@@ -77,6 +78,8 @@ protected slots:
 
 private:
     QGraphicsScene m_scene;
+    MenuWidget *p_menuWidget;
+    QGraphicsProxyWidget *p_proxy_menu_widgt;
     PlayerPlane *m_player;
     TextItem *m_scoreItem;
     TextItem *m_bloods;
